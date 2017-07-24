@@ -1,0 +1,23 @@
+
+<svg width="500px" height="200px" viewBox="0 0 500 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+  <desc>Created with Sketch.</desc>
+  <defs>
+    <rect id="path-1" x="93" y="143" width="500" height="200"></rect>
+  </defs>
+  <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Logo-Upload" transform="translate(-93.000000, -143.000000)">
+      <g id="Rectangle">
+        <use fill="#BCBCBC" fill-rule="evenodd" xlink:href="#path-1"></use>
+        <rect stroke="#979797" stroke-width="1" x="93.5" y="143.5" width="499" height="199"></rect>
+      </g>
+      <g id="Group-3" transform="translate(302.000000, 170.000000)" fill-rule="nonzero" fill="#FFFFFF">
+        <g id="image-placeholder_3x2">
+          <path d="M0.715221404,0.627449501 L0.715221404,64.1804953 L81.4966958,64.1804953 L81.4966958,0.627449501 L0.715221404,0.627449501 Z M74.9852852,57.2883834 L7.60609922,57.2883834 L7.60609922,7.51894434 L74.9852852,7.51894434 L74.9852852,57.2883834 L74.9852852,57.2883834 Z" id="Shape"></path>
+          <polygon id="Shape" points="11.2298569 51.9283319 25.1177399 37.330259 30.3210684 39.5817644 46.7393499 22.1046769 53.202016 29.8347017 56.1174348 28.073727 71.8940157 51.9283319"></polygon>
+          <circle id="Oval" cx="27.2736073" cy="20.1746387" r="6.06530524"></circle>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
