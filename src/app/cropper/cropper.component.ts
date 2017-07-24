@@ -22,6 +22,7 @@ import * as Cropper from 'cropperjs';
          class="img-placeholder">
       <img src="assets/crop-placeholder.svg">
     </div>
+      <canvas #fullCanvas></canvas>
   `,
   styles: [`
     .image-cropper {
@@ -32,6 +33,7 @@ import * as Cropper from 'cropperjs';
 })
 export class CropperComponent {
   @ViewChild('image') image: ElementRef;
+  @ViewChild('fullCanvas') fullCanvas: ElementRef;
 
   @Output() onZoom = new EventEmitter<number>();
 
@@ -70,10 +72,10 @@ export class CropperComponent {
   constructor(private _sanitizer: DomSanitizer) {
     this.cropperOptions = {
       'dragMode': 'move',
-      'minContainerHeight': 200,
-      'minContainerWidth': 500,
-      'minCropBoxHeight': 200,
-      'minCropBoxWidth': 500,
+      'minContainerHeight': 108,
+      'minContainerWidth': 270,
+      'minCropBoxHeight': 108,
+      'minCropBoxWidth': 270,
       'cropBoxMovable': false,
       'cropBoxResizable': false,
       'movable': true,
@@ -88,8 +90,8 @@ export class CropperComponent {
       'autoCropArea': 1,
     };
     this.croppedCanvasOptions = {
-      width: 500,
-      height: 200,
+      width: 270,
+      height: 108,
       fillColor: '#fff'
     };
   }
@@ -100,8 +102,8 @@ export class CropperComponent {
       Object.assign({}, this.cropperOptions, {
         ready: function () {
           const image_data: Cropper.ImageData = that._cropper.getImageData();
-          const x_scale: number = 500 / image_data.naturalWidth;
-          const y_scale: number = 200 / image_data.naturalHeight;
+          const x_scale: number = 270 / image_data.naturalWidth;
+          const y_scale: number = 108 / image_data.naturalHeight;
           let auto_zoom: number = Math.min.apply(Math, [x_scale, y_scale]);
           auto_zoom = parseFloat(auto_zoom.toFixed(2)) - 0.1;
           auto_zoom = Math.max.apply(Math, [auto_zoom, 0.1]);
@@ -111,11 +113,23 @@ export class CropperComponent {
   }
 
   get_data() {
+    this.fullCanvas.nativeElement.height = 108;
+    this.fullCanvas.nativeElement.width = 270;
+    this.fullCanvas.nativeElement.style.display = 'none';
+    console.log(this.fullCanvas);
+    const full_canvas_context = this.fullCanvas.nativeElement.getContext('2d');
+    full_canvas_context.fillStyle = 'white';
+    full_canvas_context.fillRect(0, 0, 270, 108);
     const cropped_canvas: HTMLCanvasElement = this._cropper.getCroppedCanvas(this.croppedCanvasOptions);
-    const croppedBinary = cropped_canvas.toDataURL('image/png');
+    full_canvas_context.drawImage(cropped_canvas,
+        this.fullCanvas.nativeElement.width / 2 - cropped_canvas.width / 2,
+        this.fullCanvas.nativeElement.height / 2 - cropped_canvas.height / 2
+    );
+    const croppedBinary = this.fullCanvas.nativeElement.toDataURL('image/png');
+    console.log(croppedBinary);
     return {
       image: croppedBinary,
-      scale: this.zoomValue,
+      scale: 1,
       centering_left: 0,
       centering_top: 0,
       top: 0,

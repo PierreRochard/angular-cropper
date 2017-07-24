@@ -45,17 +45,17 @@ import {CropperComponent} from 'app/cropper/cropper.component';
   styles: [`
     .container {
       position: relative;
-      max-width: 502px;
-      min-width: 502px;
-      max-height: 202px;
-      min-height: 202px;
+      max-width: 270px;
+      min-width: 270px;
+      max-height: 108px;
+      min-height: 108px;
       border: 1px solid red;
     }
 
     .upload-button {
       position: absolute;
-      bottom: 50px;
-      right: 197px;
+      bottom: 25px;
+      right: 100px;
     }
   `,
   ],
