@@ -9,7 +9,6 @@ import {
   selector: 'app-cropper-upload-component',
   template: `
     <p-fileUpload
-      #fubauto
       [mode]="fileUploadOptions.mode"
       [accept]="fileUploadOptions.accept"
       [maxFileSize]="fileUploadOptions.maxFileSize"
@@ -33,7 +32,6 @@ export class CropperUploadComponent {
     customUpload: true,
   };
 
-  // @Input() fileUploadOptions: any;
   @Output() onUploadImage = new EventEmitter<File>();
 
 }

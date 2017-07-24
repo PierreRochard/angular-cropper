@@ -8,39 +8,39 @@ import {CropperComponent} from 'app/cropper/cropper.component';
 @Component({
   selector: 'app-cropper-container',
   template: `
-    <div class="ui-g">
-      <div class="ui-g-1"></div>
-      <div class="ui-g-10">
+      <div class="ui-g">
+          <div class="ui-g-1"></div>
+          <div class="ui-g-10">
 
-        <div class="container">
-          <app-cropper-component
-            #cropper
-            [uploadedImage]="uploadedImage"
-            [zoomValue]="zoomValue"
-            (onZoom)="onZoom($event)">
-          </app-cropper-component>
-          <div class="upload-button"
-               *ngIf="(uploadedImage) === null">
-            <app-cropper-upload-component
-              (onUploadImage)="onUploadImage($event)"
-            >
-            </app-cropper-upload-component>
+              <div class="container">
+                  <app-cropper-component
+                          #cropper
+                          [uploadedImage]="uploadedImage"
+                          [zoomValue]="zoomValue"
+                          (onZoom)="onZoom($event)">
+                  </app-cropper-component>
+                  <div class="upload-button"
+                       *ngIf="(uploadedImage) === null">
+                      <app-cropper-upload-component
+                              (onUploadImage)="onUploadImage($event)"
+                      >
+                      </app-cropper-upload-component>
+                  </div>
+              </div>
           </div>
-        </div>
+          <div class="ui-g-1">
+              <app-cropper-zoom-component
+                      [zoom_slider_value]="zoomValue"
+                      (onZoom)="onZoom($event)">
+              </app-cropper-zoom-component>
+          </div>
+          <div class="ui-g-7">
+              <app-cropper-controls-component
+                      (onRemove)="onRemove()"
+                      (onSave)="onSave()"
+              ></app-cropper-controls-component>
+          </div>
       </div>
-      <div class="ui-g-1">
-        <app-cropper-zoom-component
-          [zoom_slider_value]="zoomValue"
-          (onZoom)="onZoom($event)">
-        </app-cropper-zoom-component>
-      </div>
-      <div class="ui-g-7">
-        <app-cropper-controls-component
-          (onRemove)="onRemove()"
-          (onUpdate)="onSave()"
-        ></app-cropper-controls-component>
-      </div>
-    </div>
   `,
   styles: [`
     .container {
